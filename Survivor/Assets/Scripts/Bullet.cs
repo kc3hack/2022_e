@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class Bullet : MonoBehaviour
 {
-    protected int chargePoint; // 夜ダメージ
+    protected int chargePoint = 1; // 与ダメージ
     private Rigidbody2D rigidBody;
     private bool isSet = false; // 発射可能
     private float xDir = 0; // 発射角度初期値0

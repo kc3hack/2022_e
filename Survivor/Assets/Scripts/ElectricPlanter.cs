@@ -57,8 +57,8 @@ public class ElectricPlanter : MonoBehaviour
     private Vector2 DefinePosition()
     {
         System.Random r = new System.Random();
-        float x = Generator.GetGeneratorPosition().x + 100 + (r.Next() % 10) * (r.Next() % 10);
-        float y = Generator.GetGeneratorPosition().y + 100 + (r.Next() & 10) * (r.Next() % 10);
+        float x = Generator.GetGeneratorPosition().x + 250 + (r.Next() % 100) * (r.Next() % 10);
+        float y = Generator.GetGeneratorPosition().y + 250 + (r.Next() & 10) * (r.Next() % 10);
         Vector2 vector = new Vector2(x, y);
         return vector;
     }

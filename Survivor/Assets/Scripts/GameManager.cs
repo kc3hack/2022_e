@@ -45,8 +45,24 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void SelectStrategy()
+    public void SelectStrategy(string strategyname)
     {
-        this.strategy = new SimpleStrategy();
+        GeneratorStrategy strategy = new SimpleStrategy();
+        switch (strategyname)
+        {
+            case "Simple":
+                strategy = new SimpleStrategy();
+                break;
+            case "Simple2":
+                strategy = new SimpleStrategy2();
+                break;
+        }
+        Debug.Log("Strategy selected : " + strategy.GetName());
+        this.strategy = strategy;
+    }
+
+    public GeneratorStrategy GetStrategy()
+    {
+        return this.strategy;
     }
 }

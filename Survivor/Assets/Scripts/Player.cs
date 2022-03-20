@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Generator.GetIsGame())
+        {
+            return;
+        }
         seconds += Time.deltaTime; // 秒数カウント
 
         if (seconds > interval)
@@ -27,12 +31,7 @@ public class Player : MonoBehaviour
             Debug.Log("発射");
             seconds = 0; //秒数カウント初期化
         }
-
-        // 移動してる↓↓
-        if (Generator.GetIsGame())
-        {
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * this.moveSpeed;
-        }
+        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * this.moveSpeed;
     }
 
     /// <summary>
