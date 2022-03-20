@@ -12,8 +12,9 @@ public class Generator : MonoBehaviour
     [SerializeField] private GameObject startpanel; // スタート画面
     [SerializeField] private GameObject resultpanel; // 結果画面
     private static Generator instance;
-    protected int hp = 3; // 耐久値
-    protected int interval = 3; // 発射間隔
+    private GeneratorStrategy strategy; // 戦略 
+    private int hp = 3; // 耐久値
+    private int interval = 3; // 発射間隔
     private float seconds; // 秒数カウント
     private float time; // 経過時間
     private bool isGame = false; // ゲームプレイ中かどうか
@@ -46,10 +47,43 @@ public class Generator : MonoBehaviour
         return instance.phase;
     }
 
+    /// <summary>
+    /// ゲームの経過時間のゲッター
+    /// </summary>
+    /// <returns></returns>
+    public static float GetTime()
+    {
+        return instance.time;
+    }
+
+    /// <summary>
+    /// HPのセッター
+    /// </summary>
+    /// <param name="hp"></param>
+    public void SetHP(int hp)
+    {
+        this.hp = hp;
+    }
+
+    /// <summary>
+    /// 射撃間隔のセッター
+    /// </summary>
+    /// <param name="interval"></param>
+    public void SetInterval(int interval)
+    {
+        this.interval = interval;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        if (this.strategy == null)
+        {
+            Debug.Log("戦略が決まってないので適当にします");
+            this.strategy = new SimpleStrategy();
+        }
+        strategy.SetGenerator(this);
     }
 
     // Update is called once per frame
@@ -60,7 +94,8 @@ public class Generator : MonoBehaviour
 
         if (seconds > interval)
         {
-            Shot();
+            Attack();
+            // Shot(); // 上向きに射撃 ここを変更すれば射撃を変更可能 → Strategyを実装したらAttack()に変更
             seconds = 0;
         }
 
@@ -89,6 +124,15 @@ public class Generator : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
         }
+    }
+
+    /// <summary>
+    /// 攻撃内容
+    /// 戦略に委譲
+    /// </summary>
+    private void Attack()
+    {
+        this.strategy.Attack();
     }
 
     /// <summary>
@@ -149,6 +193,8 @@ public class Generator : MonoBehaviour
         instance.phase = 1;
         instance.time = 0;
         instance.startpanel.SetActive(false);
+        instance.strategy.DefineHP();
+        instance.strategy.DefineInterval();
         Debug.Log("ゲームを始めるドン");
         // その他ゲーム開始時処理
     }

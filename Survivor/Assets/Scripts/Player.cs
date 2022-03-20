@@ -23,12 +23,7 @@ public class Player : MonoBehaviour
 
         if (seconds > interval)
         {
-            Shot(0, 1, 90, 10); // 上方向
-
-            Shot(1, 0, 0, 10); // 右方向
-            Shot(-1, 0, 0, 10); // 左方向
-
-            Shot(0, -1, 90, 10); // 下方向
+            Attack();
             Debug.Log("発射");
             seconds = 0; //秒数カウント初期化
         }
@@ -40,6 +35,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 上下左右に攻撃する
+    /// </summary>
+    private void Attack()
+    {
+        Shot(0, 1, 90, 10); // 上方向
+
+        Shot(1, 0, 0, 10); // 右方向
+        Shot(-1, 0, 0, 10); // 左方向
+
+        Shot(0, -1, 90, 10); // 下方向
+    }
 
     /// <summary>
     /// 弾丸生成→発射 上方向

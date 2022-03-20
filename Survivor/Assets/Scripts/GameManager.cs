@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private static GameManager instance;
 
+    private GeneratorStrategy strategy; // 使用する戦略(発電所の種類) メインメニューで決定する
+
     /// <summary>
     /// シングルトンゲッター
     /// </summary>
@@ -41,5 +43,10 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("シーン" + sceneName + "に移動します");
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void SelectStrategy()
+    {
+        this.strategy = new SimpleStrategy();
     }
 }

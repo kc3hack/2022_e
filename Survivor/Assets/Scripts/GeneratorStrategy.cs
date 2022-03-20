@@ -4,5 +4,9 @@
 /// </summary>
 public interface GeneratorStrategy
 {
-
+    void Attack();
+    void DefineInterval();
+    void DefineHP();
+    string GetName();
+    void SetGenerator(Generator generator);
 }
