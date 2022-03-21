@@ -8,10 +8,11 @@ public class SolStrategy : GeneratorStrategy
     private string name = "太陽光発電所";
     private int interval = 5;
     private int hp = 3;
+    private int solnum = 0;
 
     public SolStrategy()
     {
-
+        solnum = Generator.GetWeather();
     }
 
     /// <summary>
@@ -20,6 +21,9 @@ public class SolStrategy : GeneratorStrategy
     public void Attack()
     {
         this.generator.Shot(); // 上向きに射撃
+        this.generator.Shot(1, 0, 0, 10); // 右向きに射撃
+        this.generator.Shot(-1, 0, 0, 10); // 左向きに射撃
+        this.generator.Shot(0, -1, 90, 10); // 下向きに射撃
     }
     /// <summary>
     /// 発電所の射撃間隔の確定
@@ -30,8 +34,23 @@ public class SolStrategy : GeneratorStrategy
         {
             return;
         }
+        else if (solnum == 0)
+        {
+            this.generator.SetInterval(this.interval + 5);
+        }
+        else if (solnum == 1)
+        {
+            this.generator.SetInterval(this.interval - 1);
+        }
+        else if (solnum == 2)
+        {
+            this.generator.SetInterval(this.interval - 3);
+        }
+        else if (solnum == 3)
+        {
+            this.generator.SetInterval(this.interval + 7);
+        }
 
-        this.generator.SetInterval(this.interval);
     }
     /// <summary>
     /// 発電所のHPの確定
