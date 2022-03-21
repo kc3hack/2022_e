@@ -56,6 +56,21 @@ public class GameManager : MonoBehaviour
             case "Simple2":
                 strategy = new SimpleStrategy2();
                 break;
+            case "Atom":
+                strategy = new AtomStrategy();
+                break;
+            case "Fire":
+                strategy = new FireStrategy();
+                break;
+            case "Sol":
+                strategy = new SolStrategy();
+                break;
+            case "Water":
+                strategy = new WaterStrategy();
+                break;
+            case "Wind":
+                strategy = new WindStrategy();
+                break;
         }
         Debug.Log("Strategy selected : " + strategy.GetName());
         this.strategy = strategy;

@@ -22,10 +22,12 @@ public class Generator : MonoBehaviour
     private int phase = 0; // 敵の強さの段階
     private int wind = 0; // 風力 (0:なし,1:弱,2:並,3:強)
     private int fossil = 0; // 化石燃料資源量 (0:なし, 最大値とかを決めなきゃですね)
-    private int weather = 0; // 天気 (0:曇り, 1:晴れ, 2:快晴)
+    private int weather = 0; // 天気 (0:曇り, 1:晴れ, 2:快晴, 3:雨)
+    private int preWeather = 0; // 前日の天気(0:曇り, 1:晴れ, 2:快晴, 3:雨)
     [SerializeField] private GameObject windText;
     [SerializeField] private GameObject fossilText;
     [SerializeField] private GameObject weatherText;
+    [SerializeField] private GameObject preWeatherText;
 
     /// <summary>
     /// 位置情報のゲッター
@@ -87,7 +89,14 @@ public class Generator : MonoBehaviour
     {
         return instance.fossil;
     }
-
+    /// <summary>
+    /// 前日の天気のゲッター
+    /// </summary>
+    /// <returns></returns>
+    public static int GetPreWeather()
+    {
+        return instance.preWeather;
+    }
 
     /// <summary>
     /// HPのセッター
@@ -201,11 +210,34 @@ public class Generator : MonoBehaviour
         {
             tex += "晴れ";
         }
+        else if (weather == 3)
+        {
+            tex += "雨";
+        }
         else
         {
             tex += "快晴";
         }
         this.weatherText.GetComponent<Text>().text = tex;
+
+        tex = "前日:";
+        if (preWeather == 0)
+        {
+            tex += "曇り";
+        }
+        else if (preWeather == 1)
+        {
+            tex += "晴れ";
+        }
+        else if (preWeather == 3)
+        {
+            tex += "雨";
+        }
+        else
+        {
+            tex += "快晴";
+        }
+        this.preWeatherText.GetComponent<Text>().text = tex;
 
         tex = "化石:";
         tex += fossil;
