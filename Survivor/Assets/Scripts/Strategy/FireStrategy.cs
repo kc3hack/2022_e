@@ -20,7 +20,7 @@ public class FireStrategy : GeneratorStrategy
     public void Attack()
     {
         if(fossil > 0){
-            fosiil--;
+            fossil--;
             this.generator.Shot(0, 1, 90, 10);  // 上向きに射撃
             this.generator.Shot(0, -1, 90, 10); // 下向きに射撃
             this.generator.Shot(1, 0, 0, 10);   // 右向きに射撃
