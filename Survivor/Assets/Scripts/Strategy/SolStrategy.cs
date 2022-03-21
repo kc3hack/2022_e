@@ -1,6 +1,7 @@
 /// <summary>
 /// 太陽光
 /// </summary>
+/// <author>tosshi</author>
 public class SolStrategy : GeneratorStrategy
 {
     private Generator generator;
