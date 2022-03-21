@@ -7,11 +7,11 @@ public class FireStrategy : GeneratorStrategy
     private string name = "火力発電所";
     private int interval = 5;
     private int hp = 3;
-    private int fossil = Generator.GetFossil();
+    private int fossil;
 
     public FireStrategy()
     {
-
+        fossil = Generator.GetFossil();
     }
 
     /// <summary>
