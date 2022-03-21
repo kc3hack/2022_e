@@ -19,6 +19,11 @@ public class WaterStrategy : GeneratorStrategy
     public void Attack()
     {
         this.generator.Shot(); // 上向きに射撃
+        this.generator.Shot(3, 1, 33.33f, 3);
+        this.generator.Shot(-3, 1, 153.33f, 3);
+        this.generator.Shot(3, -1, -33.33f, 3);
+        this.generator.Shot(-3, -1, -153.33f, 3);
+        this.generator.Shot(0, -1, -90, 10);
     }
     /// <summary>
     /// 発電所の射撃間隔の確定
