@@ -7,6 +7,7 @@ public class FireStrategy : GeneratorStrategy
     private string name = "火力発電所";
     private int interval = 5;
     private int hp = 3;
+    private int fossil = Generator.GetFossil();
 
     public FireStrategy()
     {
@@ -18,7 +19,13 @@ public class FireStrategy : GeneratorStrategy
     /// </summary>
     public void Attack()
     {
-        this.generator.Shot(); // 上向きに射撃
+        if(fossil > 0){
+            fosiil--;
+            this.generator.Shot(0, 1, 90, 10);  // 上向きに射撃
+            this.generator.Shot(0, -1, 90, 10); // 下向きに射撃
+            this.generator.Shot(1, 0, 0, 10);   // 右向きに射撃
+            this.generator.Shot(-1, 0, 0, 10);  // 左向きに射撃
+        }
     }
     /// <summary>
     /// 発電所の射撃間隔の確定
