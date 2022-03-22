@@ -9,29 +9,125 @@ public class ElectricPlanter : MonoBehaviour
 {
     private float seconds = 0.0f; //経過時間
     private float interval = 10.0f; // 家電生成間隔
-    private string target = "Electric0"; // 生成対象 初期値:延長コード
+    [SerializeField] private string target = "Electric0"; // 生成対象 初期値:延長コード
+    private PlanterStrategy first;
+    private PlanterStrategy second;
+    private PlanterStrategy third;
+    private PlanterStrategy fourth;
+    private PlanterStrategy fifth;
+    private PlanterStrategy final;
+
+    /// <summary>
+    /// 経過時間の取得
+    /// </summary>
+    /// <returns></returns>
+    public float GetSeconds()
+    {
+        return this.seconds;
+    }
+
+    /// <summary>
+    /// 家電生成間隔の取得
+    /// </summary>
+    /// <returns></returns>
+    public float GetInterval()
+    {
+        return this.interval;
+    }
+
+    /// <summary>
+    /// 経過時間のセッター
+    /// /// </summary>
+    public void SetSeconds(float seconds)
+    {
+        this.seconds = seconds;
+    }
+
+    /// <summary>
+    /// 家具生成間隔のセッター
+    /// </summary>
+    /// <param name="interval"></param>
+    public void SetInterval(float interval)
+    {
+        this.interval = interval;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-
+        this.Initialize();
     }
 
     // Update is called once per frame
     void Update()
     {
-        seconds += Time.deltaTime;
-        if (seconds > interval)
+        if (!Generator.GetIsGame())
         {
-            Debug.Log("つくる");
-            seconds = 0.0f;
-            Plant();
+            return;
         }
+
+        seconds += Time.deltaTime;
+        if (Generator.GetPhase() == 0)
+        {
+            first.Planting();
+        }
+        else if (Generator.GetPhase() == 1)
+        {
+            second.Planting();
+        }
+        else if (Generator.GetPhase() == 2)
+        {
+            third.Planting();
+        }
+        else if (Generator.GetPhase() == 3)
+        {
+            fourth.Planting();
+        }
+        else if (Generator.GetPhase() == 4)
+        {
+            fifth.Planting();
+        }
+        else
+        {
+            final.Planting();
+        }
+    }
+
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
+    public void Initialize()
+    {
+        /// 各戦略の生成、セット、初期化
+        this.first = new FirstStratgey();
+        first.SetPlanter(this);
+        first.Initialize();
+
+        this.second = new SecondStratgey();
+        second.SetPlanter(this);
+        second.Initialize();
+
+        this.third = new ThirdStratgey();
+        third.SetPlanter(this);
+        third.Initialize();
+
+        this.fourth = new FourthStratgey();
+        fourth.SetPlanter(this);
+        fourth.Initialize();
+
+        this.fifth = new FifthStratgey();
+        fifth.SetPlanter(this);
+        fifth.Initialize();
+
+        this.final = new FinalStratgey();
+        final.SetPlanter(this);
+        final.Initialize();
     }
 
     /// <summary>
     /// 家電の生成
     /// </summary>
-    private void Plant()
+    public void Plant()
     {
         if (!Generator.GetIsGame()) // ゲームをプレイ中かの確認
         {
@@ -56,11 +152,32 @@ public class ElectricPlanter : MonoBehaviour
     /// <returns></returns>
     private Vector2 DefinePosition()
     {
-        System.Random r = new System.Random();
-        float x = Generator.GetGeneratorPosition().x + 250 + (r.Next() % 100) * (r.Next() % 10);
-        float y = Generator.GetGeneratorPosition().y + 250 + (r.Next() & 10) * (r.Next() % 10);
-        Vector2 vector = new Vector2(x, y);
-        return vector;
+        Vector2 ret = new Vector2(0, 0);
+        if (Generator.GetPhase() == 0)
+        {
+            ret = first.DefinePosition();
+        }
+        else if (Generator.GetPhase() == 1)
+        {
+            ret = second.DefinePosition();
+        }
+        else if (Generator.GetPhase() == 2)
+        {
+            ret = third.DefinePosition();
+        }
+        else if (Generator.GetPhase() == 3)
+        {
+            ret = fourth.DefinePosition();
+        }
+        else if (Generator.GetPhase() == 4)
+        {
+            ret = fifth.DefinePosition();
+        }
+        else
+        {
+            ret = final.DefinePosition();
+        }
+        return ret;
     }
 
     /// <summary>

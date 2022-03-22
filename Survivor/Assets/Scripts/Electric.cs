@@ -8,8 +8,9 @@ using UnityEngine;
 /// </summary>
 public class Electric : MonoBehaviour
 {
-    protected int hp = 1; // 体力
-    protected float moveSpeed = 30; // 移動速度
+    protected int hp; // 体力
+    protected float moveSpeed; // 移動速度
+    protected string ename; // 家具名
     private Rigidbody2D rigidBody;
 
 
@@ -17,12 +18,28 @@ public class Electric : MonoBehaviour
     void Start()
     {
         this.rigidBody = this.gameObject.GetComponent<Rigidbody2D>();
+        this.Initialize();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+    }
+
+    public string GetName()
+    {
+        return this.ename;
+    }
+
+    /// <summary>
+    /// 初期化処理
+    /// </summary>
+    protected virtual void Initialize()
+    {
+        this.hp = 1;
+        this.moveSpeed = 30;
+        this.name = "hoge";
     }
 
     /// <summary>
@@ -44,7 +61,7 @@ public class Electric : MonoBehaviour
     /// <param name="damage">被ダメージ</param>
     public void Charge(int damage)
     {
-        Debug.Log("じゅうでんされた");
+        Debug.Log(this.ename + "はじゅうでんされた");
         this.hp -= damage;
         if (this.hp < 1)
         {
