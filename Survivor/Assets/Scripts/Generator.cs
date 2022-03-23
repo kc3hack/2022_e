@@ -148,6 +148,7 @@ public class Generator : MonoBehaviour
         {
             this.phase += 1; // フェイズの移行処理
             Debug.Log("第n段階に到達、敵が強化");
+            this.strategy.DefineInterval();
             this.time = 0;
             // 強化する
             // デザインパターンのObserverでElectricとかPlayerにPhaseの変更を通知するようにしても良いか
@@ -179,7 +180,7 @@ public class Generator : MonoBehaviour
         this.wind = rand.Next() % 4;
         this.weather = rand.Next() % 4;
         this.preWeather = rand.Next() % 4;
-        this.fossil = rand.Next() % 100;
+        this.fossil = rand.Next() % 40 + 20;
 
         string tex = "";
 
@@ -287,6 +288,21 @@ public class Generator : MonoBehaviour
         bullet.gameObject.transform.parent = GameObject.FindGameObjectWithTag("PlayArea").transform;
         float x = this.gameObject.transform.position.x;
         float y = this.gameObject.transform.position.y;
+
+        switch (this.strategy)
+        {
+            case FireStrategy:
+            case AtomStrategy:
+                bullet.SetChargePoint(14);
+                break;
+            case WaterStrategy:
+            case SolStrategy:
+            case WindStrategy:
+                bullet.SetChargePoint(10);
+                break;
+        }
+
+
         bullet.Shot(x, y, xDir, yDir, dir, speed);
     }
 

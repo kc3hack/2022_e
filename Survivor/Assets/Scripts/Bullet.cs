@@ -30,6 +30,15 @@ public class Bullet : MonoBehaviour
     }
 
     /// <summary>
+    /// 与ダメージの変更
+    /// </summary>
+    /// <param name="point"></param>
+    public void SetChargePoint(int point)
+    {
+        this.chargePoint = point;
+    }
+
+    /// <summary>
     /// エネルギー弾を発射
     /// </summary>
     /// <param name="x">発射位置x</param>
