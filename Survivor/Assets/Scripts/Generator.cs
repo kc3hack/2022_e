@@ -148,6 +148,7 @@ public class Generator : MonoBehaviour
         {
             this.phase += 1; // フェイズの移行処理
             Debug.Log("第n段階に到達、敵が強化");
+            this.strategy.DefineInterval();
             this.time = 0;
             // 強化する
             // デザインパターンのObserverでElectricとかPlayerにPhaseの変更を通知するようにしても良いか
