@@ -17,6 +17,7 @@ public class FirstStratgey : PlanterStrategy
     {
         if (planter.GetSeconds() > planter.GetInterval())
         {
+            this.planter.SetTarget("Electric1");
             Debug.Log("つくる");
             planter.SetSeconds(0.0f);
             planter.Plant();
@@ -25,7 +26,7 @@ public class FirstStratgey : PlanterStrategy
 
     /// <summary>
     /// 家電の生成位置の決定
-    /// 要・調整
+    /// 要・調整　第1象限にだけ出るようにしてる
     /// </summary>
     /// <returns></returns>
     public Vector2 DefinePosition()
