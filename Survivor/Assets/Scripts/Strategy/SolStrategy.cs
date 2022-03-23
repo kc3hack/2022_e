@@ -20,10 +20,24 @@ public class SolStrategy : GeneratorStrategy
     /// </summary>
     public void Attack()
     {
-        this.generator.Shot(); // 上向きに射撃
-        this.generator.Shot(1, 0, 0, 10); // 右向きに射撃
-        this.generator.Shot(-1, 0, 0, 10); // 左向きに射撃
-        this.generator.Shot(0, -1, 90, 10); // 下向きに射撃
+        if (Generator.GetPhase() == 0)
+        {
+            this.generator.Shot(1, 0, 0, 10); // 右向きに射撃
+            this.generator.Shot(-1, 0, 0, 10); // 左向きに射撃
+        }
+        else if (Generator.GetPhase() == 1)
+        {
+            this.generator.Shot(); // 上向きに射撃
+            this.generator.Shot(1.7f, -1, 150, 10); // 右下向きに射撃
+            this.generator.Shot(-1.7f, -1, 30, 10); // 左下向きに射撃
+        }
+        else
+        {
+            this.generator.Shot(); // 上向きに射撃
+            this.generator.Shot(1, 0, 0, 10); // 右向きに射撃
+            this.generator.Shot(-1, 0, 0, 10); // 左向きに射撃
+            this.generator.Shot(0, -1, 90, 10); // 下向きに射撃
+        }
     }
     /// <summary>
     /// 発電所の射撃間隔の確定
