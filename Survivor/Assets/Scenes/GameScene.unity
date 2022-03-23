@@ -960,6 +960,7 @@ MonoBehaviour:
   fossilText: {fileID: 1071990572}
   weatherText: {fileID: 737033620}
   preWeatherText: {fileID: 339341571}
+  player: {fileID: 0}
 --- !u!1 &958684591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,6 +1966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c5c1c855de7c345809b0b86a3783fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: Electric0
 --- !u!1 &1659559893
 GameObject:
   m_ObjectHideFlags: 0
