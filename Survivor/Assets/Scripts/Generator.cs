@@ -180,7 +180,7 @@ public class Generator : MonoBehaviour
         this.wind = rand.Next() % 4;
         this.weather = rand.Next() % 4;
         this.preWeather = rand.Next() % 4;
-        this.fossil = rand.Next() % 100;
+        this.fossil = rand.Next() % 40 + 20;
 
         string tex = "";
 
