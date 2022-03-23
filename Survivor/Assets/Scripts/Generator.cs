@@ -28,6 +28,7 @@ public class Generator : MonoBehaviour
     [SerializeField] private GameObject fossilText;
     [SerializeField] private GameObject weatherText;
     [SerializeField] private GameObject preWeatherText;
+    [SerializeField] private Player player;
 
     /// <summary>
     /// 位置情報のゲッター
@@ -36,6 +37,15 @@ public class Generator : MonoBehaviour
     public static Vector2 GetGeneratorPosition()
     {
         return instance.gameObject.transform.position;
+    }
+
+    /// <summary>
+    /// プレイヤーのゲッター
+    /// </summary>
+    /// <returns></returns>
+    public static Player GetPlayer()
+    {
+        return instance.player;
     }
 
     /// <summary>
@@ -289,17 +299,14 @@ public class Generator : MonoBehaviour
         float x = this.gameObject.transform.position.x;
         float y = this.gameObject.transform.position.y;
 
-        switch (this.strategy)
+
+        if (this.strategy is FireStrategy || this.strategy is AtomStrategy)
         {
-            case FireStrategy:
-            case AtomStrategy:
-                bullet.SetChargePoint(14);
-                break;
-            case WaterStrategy:
-            case SolStrategy:
-            case WindStrategy:
-                bullet.SetChargePoint(10);
-                break;
+            bullet.SetChargePoint(14);
+        }
+        else
+        {
+            bullet.SetChargePoint(10);
         }
 
 

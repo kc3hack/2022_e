@@ -65,7 +65,12 @@ public class Electric : MonoBehaviour
         this.hp -= damage;
         if (this.hp < 1)
         {
+            System.Random rand = new System.Random();
             Destroy(this.gameObject);
+            if (rand.Next() % 10 < 1)
+            {
+                Generator.GetPlayer().Enforce();
+            }
         }
     }
 }

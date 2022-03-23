@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private float seconds; // 秒数カウント
     private float interval = 5; //発射間隔
     private float moveSpeed = 50; // 移動速度
+    private int point; // 与ダメージ
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,14 @@ public class Player : MonoBehaviour
             seconds = 0; //秒数カウント初期化
         }
         this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * this.moveSpeed;
+    }
+
+    /// <summary>
+    /// 強化処理
+    /// </summary>
+    public void Enforce()
+    {
+
     }
 
     /// <summary>
