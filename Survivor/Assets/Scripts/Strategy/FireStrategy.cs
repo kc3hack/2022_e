@@ -1,17 +1,28 @@
 /// <summary>
 /// 火力
 /// </summary>
+/// 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 public class FireStrategy : GeneratorStrategy
 {
     private Generator generator;
     private string name = "火力発電所";
     private int interval = 5;
     private int hp = 3;
+    private float n = 0;
     private int fossil;
 
     public FireStrategy()
     {
         fossil = Generator.GetFossil();
+        if (fossil > 180/5)
+        {
+            interval = 150 / fossil;
+        }
     }
 
     /// <summary>
@@ -21,11 +32,16 @@ public class FireStrategy : GeneratorStrategy
     {
         if(fossil > 0){
             fossil--;
-            this.generator.Shot(0, 1, 90, 10);  // 上向きに射撃
-            this.generator.Shot(0, -1, 90, 10); // 下向きに射撃
-            this.generator.Shot(1, 0, 0, 10);   // 右向きに射撃
-            this.generator.Shot(-1, 0, 0, 10);  // 左向きに射撃
+            this.generator.Shot(Mathf.Cos(Rand(n+90)), Mathf.Sin(Rand(n+90)), 90+n,10); // 上向きに射撃
+            this.generator.Shot(Mathf.Cos(Rand(n-90)), Mathf.Sin(Rand(n-90)), 90+n,10); // 下向きに射撃
+            this.generator.Shot(Mathf.Cos(Rand(n)),    Mathf.Sin(Rand(n)),    0+n, 10); // 右向きに射撃
+            this.generator.Shot(Mathf.Cos(Rand(n+180)),Mathf.Sin(Rand(n+180)),0+n, 10); // 左向きに射撃
+            n = n + 15;
         }
+    }
+    public float Rand(float n)
+    {
+        return n * (3.14f / 180f);
     }
     /// <summary>
     /// 発電所の射撃間隔の確定
