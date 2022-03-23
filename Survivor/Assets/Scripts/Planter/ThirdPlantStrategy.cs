@@ -16,7 +16,10 @@ public class ThirdStratgey : PlanterStrategy
 
     public void Planting()
     {
-
+        this.planter.SetTarget("Electric1");
+        Debug.Log("つくる");
+        planter.SetSeconds(5.0f);
+        planter.Plant();
     }
 
     public Vector2 DefinePosition()

@@ -19,7 +19,7 @@ public class FirstStratgey : PlanterStrategy
         {
             this.planter.SetTarget("Electric1");
             Debug.Log("つくる");
-            planter.SetSeconds(0.0f);
+            planter.SetSeconds(5.0f);
             planter.Plant();
         }
     }
