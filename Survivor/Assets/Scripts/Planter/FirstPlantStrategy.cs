@@ -53,6 +53,7 @@ public class FirstStratgey : PlanterStrategy
 
             if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 360000){
                 Debug.Log("(" + x.ToString() + "," + y.ToString() + ")につくる");
+                //
                 break;
             }
         }
