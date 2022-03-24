@@ -19,6 +19,7 @@ public class Generator : MonoBehaviour
     private float seconds; // 秒数カウント
     private float time; // 経過時間
     private bool isGame = false; // ゲームプレイ中かどうか
+    private int score;
     private int phase = 0; // 敵の強さの段階
     private int wind = 0; // 風力 (0:なし,1:弱,2:並,3:強)
     private int fossil = 0; // 化石燃料資源量 (0:なし, 最大値とかを決めなきゃですね)
@@ -28,6 +29,8 @@ public class Generator : MonoBehaviour
     [SerializeField] private GameObject fossilText;
     [SerializeField] private GameObject weatherText;
     [SerializeField] private GameObject preWeatherText;
+    [SerializeField] private GameObject resultText;
+    [SerializeField] private GameObject paramText;
     [SerializeField] private Player player;
 
     /// <summary>
@@ -39,6 +42,16 @@ public class Generator : MonoBehaviour
         return instance.gameObject.transform.position;
     }
 
+    public static void AddScore(int score)
+    {
+        instance.score += score;
+        Debug.Log("Score == " + instance.score);
+    }
+
+    public static int GetScore()
+    {
+        return instance.score;
+    }
     /// <summary>
     /// プレイヤーのゲッター
     /// </summary>
@@ -130,18 +143,17 @@ public class Generator : MonoBehaviour
     void Start()
     {
         instance = this;
-        if (this.strategy == null)
-        {
-            Debug.Log("戦略はとりあえず適当にします");
-            this.strategy = new SimpleStrategy();
-        }
-        strategy.SetGenerator(this);
+
         this.SetParam();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!this.isGame)
+        {
+            return;
+        }
         seconds += Time.deltaTime;
         time += Time.deltaTime;
 
@@ -193,25 +205,7 @@ public class Generator : MonoBehaviour
         this.fossil = rand.Next() % 40 + 20;
 
         string tex = "";
-
-        tex = "風力:";
-        if (wind == 0)
-        {
-            tex += "無し";
-        }
-        else if (wind == 1)
-        {
-            tex += "弱";
-        }
-        else if (wind == 2)
-        {
-            tex += "並";
-        }
-        else
-        {
-            tex += "強";
-        }
-        this.windText.GetComponent<Text>().text = tex;
+        this.paramText.GetComponent<Text>().text = "";
 
         tex = "天気:";
         if (weather == 0)
@@ -231,6 +225,7 @@ public class Generator : MonoBehaviour
             tex += "快晴";
         }
         this.weatherText.GetComponent<Text>().text = tex;
+        this.paramText.GetComponent<Text>().text += tex;
 
         tex = "前日:";
         if (preWeather == 0)
@@ -250,10 +245,32 @@ public class Generator : MonoBehaviour
             tex += "快晴";
         }
         this.preWeatherText.GetComponent<Text>().text = tex;
+        this.paramText.GetComponent<Text>().text += "," + tex;
+
+        tex = "風力:";
+        if (wind == 0)
+        {
+            tex += "無し";
+        }
+        else if (wind == 1)
+        {
+            tex += "弱";
+        }
+        else if (wind == 2)
+        {
+            tex += "並";
+        }
+        else
+        {
+            tex += "強";
+        }
+        this.windText.GetComponent<Text>().text = tex;
+        this.paramText.GetComponent<Text>().text += "," + tex;
 
         tex = "化石:";
         tex += fossil;
         this.fossilText.GetComponent<Text>().text = tex;
+        this.paramText.GetComponent<Text>().text += "," + tex;
     }
 
     /// <summary>
@@ -335,15 +352,23 @@ public class Generator : MonoBehaviour
     /// </summary>
     public void GameStart()
     {
-        this.isGame = true;
         this.phase = 0;
         this.time = 0;
         this.startpanel.SetActive(false);
         this.strategy = GameManager.GetInstance().GetStrategy();
+        if (this.strategy == null)
+        {
+            Debug.Log("戦略はとりあえず適当にします");
+            this.strategy = new SimpleStrategy();
+        }
         this.strategy.SetGenerator(this);
         this.strategy.DefineHP();
         this.strategy.DefineInterval();
+        string tex = this.paramText.GetComponent<Text>().text;
+        this.paramText.GetComponent<Text>().text = this.strategy.GetName() + "\n" + tex;
+        this.score = 0;
         Debug.Log("ゲームを始めるドン");
+        this.isGame = true;
         // その他ゲーム開始時処理
     }
 
@@ -354,6 +379,7 @@ public class Generator : MonoBehaviour
     {
         Debug.Log("ゲーム終了だドン");
         this.isGame = false;
+        this.resultText.GetComponent<Text>().text = this.score + " J";
         this.resultpanel.SetActive(true);
         // スコア算出とか結果発表とかの終了後の処理
     }

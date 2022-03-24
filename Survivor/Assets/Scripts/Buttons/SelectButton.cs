@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SelectButton : MonoBehaviour, IClickable
 {
     [SerializeField] private string targetStrategyName;
+    [SerializeField] private GameObject start;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +22,6 @@ public class SelectButton : MonoBehaviour, IClickable
     public void OnClicked()
     {
         GameManager.GetInstance().SelectStrategy(this.targetStrategyName);
+        this.start.SetActive(true);
     }
 }

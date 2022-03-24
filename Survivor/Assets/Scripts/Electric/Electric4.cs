@@ -6,6 +6,7 @@ public class Electric4 : Electric
 {
     protected override void Initialize()
     {
+        this.maxHp = 100;
         this.hp = 100;
         this.moveSpeed = 3;
         this.name = "エアコン";
