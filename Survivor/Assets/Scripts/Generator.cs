@@ -343,7 +343,7 @@ public class Generator : MonoBehaviour
         }
         if (hp < 1)
         {
-            this.GameSet();
+            GameSet();
         }
     }
 
@@ -375,12 +375,12 @@ public class Generator : MonoBehaviour
     /// <summary>
     /// ゲーム終了時の処理
     /// </summary>
-    public void GameSet()
+    public static void GameSet()
     {
         Debug.Log("ゲーム終了だドン");
-        this.isGame = false;
-        this.resultText.GetComponent<Text>().text = this.score + " J";
-        this.resultpanel.SetActive(true);
+        instance.isGame = false;
+        instance.resultText.GetComponent<Text>().text = instance.score + " J";
+        instance.resultpanel.SetActive(true);
         // スコア算出とか結果発表とかの終了後の処理
     }
 }
