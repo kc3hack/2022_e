@@ -960,7 +960,7 @@ MonoBehaviour:
   fossilText: {fileID: 1071990572}
   weatherText: {fileID: 737033620}
   preWeatherText: {fileID: 339341571}
-  player: {fileID: 0}
+  player: {fileID: 1761515118}
 --- !u!1 &958684591
 GameObject:
   m_ObjectHideFlags: 0
