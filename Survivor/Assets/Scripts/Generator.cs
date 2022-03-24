@@ -15,7 +15,7 @@ public class Generator : MonoBehaviour
     private static Generator instance;
     private GeneratorStrategy strategy; // 戦略 
     private int hp = 3; // 耐久値
-    private int interval = 3; // 発射間隔
+    private float interval = 3; // 発射間隔
     private float seconds; // 秒数カウント
     private float time; // 経過時間
     private bool isGame = false; // ゲームプレイ中かどうか
@@ -121,7 +121,7 @@ public class Generator : MonoBehaviour
     /// 射撃間隔のセッター
     /// </summary>
     /// <param name="interval"></param>
-    public void SetInterval(int interval)
+    public void SetInterval(float interval)
     {
         this.interval = interval;
     }
