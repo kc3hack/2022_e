@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 /// <summary>
 /// 第1段階での家具生成
 /// 初期化時にplanterのインターバルを設定
@@ -7,23 +9,31 @@ using UnityEngine;
 public class FirstStratgey : PlanterStrategy
 {
     private ElectricPlanter planter;
-
+    private List<string> target = new List<string>();
+    private int length = 2;
+    private float[] generateSpeed = {0.5f, 0.5f};//SetSecondの引数
     public void Initialize()
     {
-
+        //家電を配列に入れる
+        for(int i = 0; i < length; i++){
+            target.Add("Electric" + (i+1).ToString());
+        }
     }
 
     public void Planting()
     {
-        if (planter.GetSeconds() > planter.GetInterval())
+        if (planter.GetSeconds() <= planter.GetInterval())
         {
-            this.planter.SetTarget("Electric1");
+            return;
+        }
+        
+        for(int i = 0; i < length; i++){
+            this.planter.SetTarget(target[i]);
             Debug.Log("つくる");
-            planter.SetSeconds(0.0f);
+            planter.SetSeconds(generateSpeed[i]);
             planter.Plant();
         }
     }
-
     /// <summary>
     /// 家電の生成位置の決定
     /// 要・調整　第1象限にだけ出るようにしてる
@@ -31,9 +41,26 @@ public class FirstStratgey : PlanterStrategy
     /// <returns></returns>
     public Vector2 DefinePosition()
     {
-        System.Random r = new System.Random();
-        float x = Generator.GetGeneratorPosition().x + 250 + (r.Next() % 100) * (r.Next() % 10);
-        float y = Generator.GetGeneratorPosition().y + 250 + (r.Next() & 10) * (r.Next() % 10);
+        float x = 250;
+        float y = 250;
+        int size = 0;
+        for(;;){
+            System.Random r = new System.Random();
+            float random = r.Next(-50, 50) * (r.Next(-10, 10));
+            if(random > 0){
+                size = 250;
+            }
+            else{
+                size = -250;
+            }
+            x = Generator.GetGeneratorPosition().x + size + (r.Next(-50, 50) * (r.Next(-10, 10)));
+            y = Generator.GetGeneratorPosition().y + size + (r.Next(-50, 50) * (r.Next(-10, 10)));
+
+            if(Math.Pow(x + 250, 2) + Math.Pow(y + 250, 2) > 700){
+                Debug.Log("(" + x.ToString() + "," + y.ToString() + ")につくる");
+                break;
+            }
+        }
         Vector2 vector = new Vector2(x, y);
         return vector;
     }
