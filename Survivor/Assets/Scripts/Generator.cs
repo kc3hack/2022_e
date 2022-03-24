@@ -320,6 +320,10 @@ public class Generator : MonoBehaviour
     {
         this.hp -= 1;
         Debug.Log("残りHP:" + hp);
+        if (this.strategy is AtomStrategy)
+        {
+            player.DeForce();
+        }
         if (hp < 1)
         {
             this.GameSet();

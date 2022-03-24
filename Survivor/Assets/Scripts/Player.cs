@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         if (r % 4 == 0)
         {
             // 移動速度UP
-            if (this.moveSpeed == 50)
+            if (this.moveSpeed < 70)
             {
                 this.moveSpeed = 70;
             }
@@ -106,6 +106,14 @@ public class Player : MonoBehaviour
             }
             Debug.Log("ひんどあがった");
         }
+    }
+
+    /// <summary>
+    /// プレイヤーの弱体化
+    /// </summary>
+    public void DeForce()
+    {
+        this.moveSpeed = 50;
     }
 
     /// <summary>
