@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 /// <summary>
 /// 第1段階での家具生成
 /// 初期化時にplanterのインターバルを設定
@@ -7,23 +8,31 @@ using UnityEngine;
 public class FirstStratgey : PlanterStrategy
 {
     private ElectricPlanter planter;
-
+    private List<string> target = new List<string>();
+    private int length = 2;
+    private float[] generateSpeed = {0.5f, 0.5f};//SetSecondの引数
     public void Initialize()
     {
-
+        //家電を配列に入れる
+        for(int i = 0; i < length; i++){
+            target.Add("Electric" + (i+1).ToString());
+        }
     }
 
     public void Planting()
     {
-        if (planter.GetSeconds() > planter.GetInterval())
+        if (planter.GetSeconds() <= planter.GetInterval())
         {
-            this.planter.SetTarget("Electric1");
+            return;
+        }
+        
+        for(int i = 0; i < length; i++){
+            this.planter.SetTarget(target[i]);
             Debug.Log("つくる");
-            planter.SetSeconds(5.0f);
+            planter.SetSeconds(generateSpeed[i]);
             planter.Plant();
         }
     }
-
     /// <summary>
     /// 家電の生成位置の決定
     /// 要・調整　第1象限にだけ出るようにしてる

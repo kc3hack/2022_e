@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 /// <summary>
 /// 第3段階での家具生成
 /// 初期化時にplanterのインターバルを設定
@@ -8,25 +9,44 @@ using UnityEngine;
 public class FinalStratgey : PlanterStrategy
 {
     private ElectricPlanter planter;
-
+    private List<string> target = new List<string>();
+    private int length = 4;
+    private float[] generateSpeed = {0.3f, 0.3f, 0.3f, 0.3f};//SetSecondの引数
     public void Initialize()
     {
-
+        //家電を配列に入れる
+        for(int i = 0; i < length; i++){
+            target.Add("Electric" + (i+1).ToString());
+        }
     }
 
     public void Planting()
     {
-        this.planter.SetTarget("Electric1");
-        Debug.Log("つくる");
-        planter.SetSeconds(5.0f);
-        planter.Plant();
+        if (planter.GetSeconds() <= planter.GetInterval())
+        {
+            return;
+        }
+
+        for(int i = 0; i < length; i++){
+            this.planter.SetTarget(target[i]);
+            Debug.Log("つくる");
+            planter.SetSeconds(generateSpeed[i]);
+            planter.Plant();
+        }
     }
 
+    /// <summary>
+    /// 家電の生成位置の決定
+    /// 要・調整　第1象限にだけ出るようにしてる
+    /// </summary>
+    /// <returns></returns>
     public Vector2 DefinePosition()
     {
-        Vector2 ret = new Vector2(0, 0);
-        // ここで生成位置決定
-        return ret;
+        System.Random r = new System.Random();
+        float x = Generator.GetGeneratorPosition().x + 250 + (r.Next() % 100) * (r.Next() % 10);
+        float y = Generator.GetGeneratorPosition().y + 250 + (r.Next() & 10) * (r.Next() % 10);
+        Vector2 vector = new Vector2(x, y);
+        return vector;
     }
 
     public void SetPlanter(ElectricPlanter planter)
