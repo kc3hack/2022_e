@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class Electric : MonoBehaviour
 {
+    protected int maxHp; // 最大体力値
     protected int hp; // 体力
     protected float moveSpeed; // 移動速度
     protected string ename; // 家具名
@@ -37,9 +38,7 @@ public class Electric : MonoBehaviour
     /// </summary>
     protected virtual void Initialize()
     {
-        this.hp = 1;
-        this.moveSpeed = 30;
-        this.name = "hoge";
+
     }
 
     /// <summary>
@@ -65,12 +64,13 @@ public class Electric : MonoBehaviour
         this.hp -= damage;
         if (this.hp < 1)
         {
+            Generator.AddScore(this.maxHp);
             System.Random rand = new System.Random();
-            Destroy(this.gameObject);
             if (rand.Next() % 10 < 1)
             {
                 Generator.GetPlayer().Enforce();
             }
+            Destroy(this.gameObject);
         }
     }
 }

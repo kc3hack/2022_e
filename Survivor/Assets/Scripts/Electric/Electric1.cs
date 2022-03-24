@@ -7,6 +7,7 @@ public class Electric1 : Electric
     protected override void Initialize()
     {
         this.hp = 3;
+        this.maxHp = 3;
         this.moveSpeed = 100;
         this.name = "扇風機";
     }

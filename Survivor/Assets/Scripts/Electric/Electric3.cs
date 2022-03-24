@@ -7,6 +7,7 @@ public class Electric3 : Electric
     protected override void Initialize()
     {
         this.hp = 25;
+        this.maxHp = 25;
         this.moveSpeed = 12;
         this.name = "冷蔵庫";
     }

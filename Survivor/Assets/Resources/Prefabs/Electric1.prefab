@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 3227321890330197480}
   - component: {fileID: 3227321890330197487}
   - component: {fileID: 3227321890330197481}
-  - component: {fileID: 3227321890330197482}
   - component: {fileID: 3227321890330197483}
   - component: {fileID: 460508110593226324}
+  - component: {fileID: 1408264462729994346}
   m_Layer: 5
-  m_Name: Electric0 1
+  m_Name: Electric1
   m_TagString: Electric
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,18 +100,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3227321890330197482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3227321890330197484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62e31b70a9aeb0441a9e59cf6e1ab021, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &3227321890330197483
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -164,3 +152,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 144.22058, y: 144.08258}
   m_EdgeRadius: 0
+--- !u!114 &1408264462729994346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227321890330197484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a6248fc072b0054482d06ef3008de74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
