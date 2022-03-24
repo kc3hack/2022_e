@@ -7,10 +7,11 @@ public class AtomStrategy : GeneratorStrategy
     private string name = "原子力発電所";
     private int interval = 5;
     private int hp = 3;
+    private int num;
 
     public AtomStrategy()
     {
-
+        this.num = 0;
     }
 
     /// <summary>
@@ -18,7 +19,50 @@ public class AtomStrategy : GeneratorStrategy
     /// </summary>
     public void Attack()
     {
-        this.generator.Shot(); // 上向きに射撃
+        if (Generator.GetPhase() == 0)
+        {
+            this.generator.Shot(3, 1, 33.33f, 3);
+            this.generator.Shot(-3, 1, 153.33f, 3);
+            this.generator.Shot(0, -1, -90, 10);
+        }
+        else if (Generator.GetPhase() == 1)
+        {
+            this.generator.Shot();
+            this.generator.Shot(3, -1, -30, 3);
+            this.generator.Shot(-3, -1, 210, 3);
+        }
+        else if (Generator.GetPhase() == 2)
+        {
+            this.num += 1;
+            if (this.num % 4 == 0)
+            {
+                // this.generator.Shot(0, 1, 90, 10);
+                this.generator.Shot(1, 0, 0, 10);
+                this.generator.Shot(-1, 0, 0, 10);
+                this.generator.Shot(0, -1, 90, 10);
+            }
+            else if (this.num % 4 == 1)
+            {
+                this.generator.Shot(0, 1, 90, 10);
+                // this.generator.Shot(1, 0, 0, 10);
+                this.generator.Shot(-1, 0, 0, 10);
+                this.generator.Shot(0, -1, 90, 10);
+            }
+            else if (this.num % 4 == 2)
+            {
+                this.generator.Shot(0, 1, 90, 10);
+                this.generator.Shot(1, 0, 0, 10);
+                // this.generator.Shot(-1, 0, 0, 10);
+                this.generator.Shot(0, -1, 90, 10);
+            }
+            else if (this.num % 4 == 3)
+            {
+                this.generator.Shot(0, 1, 90, 10);
+                this.generator.Shot(1, 0, 0, 10);
+                this.generator.Shot(-1, 0, 0, 10);
+                // this.generator.Shot(0, -1, 90, 10);
+            }
+        }
     }
     /// <summary>
     /// 発電所の射撃間隔の確定
