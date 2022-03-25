@@ -295,7 +295,16 @@ public class Generator : MonoBehaviour
         bullet.gameObject.transform.parent = GameObject.FindGameObjectWithTag("PlayArea").transform;
         float x = this.gameObject.transform.position.x;
         float y = this.gameObject.transform.position.y;
+        if (this.strategy is FireStrategy || this.strategy is AtomStrategy)
+        {
+            bullet.SetChargePoint(14);
+        }
+        else
+        {
+            bullet.SetChargePoint(10);
+        }
         bullet.Shot(x, y, 0, 1, 90, 10);
+        SEManager.ShotG();
     }
 
     /// <summary>
@@ -328,6 +337,7 @@ public class Generator : MonoBehaviour
 
 
         bullet.Shot(x, y, xDir, yDir, dir, speed);
+        SEManager.ShotG();
     }
 
     /// <summary>
@@ -343,7 +353,12 @@ public class Generator : MonoBehaviour
         }
         if (hp < 1)
         {
+            SEManager.DestroyG();
             GameSet();
+        }
+        else
+        {
+            SEManager.DamagedG();
         }
     }
 

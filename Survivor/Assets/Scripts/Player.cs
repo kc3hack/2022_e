@@ -195,6 +195,7 @@ public class Player : MonoBehaviour
         bullet.gameObject.transform.parent = GameObject.FindGameObjectWithTag("PlayArea").transform;
         float x = this.gameObject.transform.position.x;
         float y = this.gameObject.transform.position.y;
+        SEManager.ShotP();
         bullet.Shot(x, y, 0, 1, 90, 10);
     }
 
