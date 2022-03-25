@@ -54,11 +54,11 @@ public class SolStrategy : GeneratorStrategy
         }
         else if (solnum == 1)
         {
-            this.generator.SetInterval(this.interval - 1);
+            this.generator.SetInterval(this.interval + 1);
         }
         else if (solnum == 2)
         {
-            this.generator.SetInterval(this.interval - 3);
+            this.generator.SetInterval(this.interval - 1);
         }
         else if (solnum == 3)
         {
