@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
             {
                 this.charge += Time.deltaTime;
                 this.point = (int)this.charge * 5;
-                SEManager.ChargeP();
+                //SEManager.ChargeP();
             }
 
         }
