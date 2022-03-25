@@ -32,8 +32,13 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            this.charge += Time.deltaTime;
-            this.point = (int)this.charge * 5;
+            if (this.charge < 100)
+            {
+                this.charge += Time.deltaTime;
+                this.point = (int)this.charge * 5;
+                SEManager.ChargeP();
+            }
+
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
@@ -67,7 +72,7 @@ public class Player : MonoBehaviour
     {
         System.Random rand = new System.Random();
         int r = rand.Next();
-        if (r % 4 == 0)
+        if (r % 3 == 0)
         {
             // 移動速度UP
             if (this.moveSpeed < 70)
@@ -80,7 +85,7 @@ public class Player : MonoBehaviour
             }
             Debug.Log("はやくなった");
         }
-        else if (r % 4 == 1)
+        else if (r % 3 == 1)
         {
             // 射撃方法UP
             if (this.shotType == 1)
@@ -93,20 +98,7 @@ public class Player : MonoBehaviour
             }
             Debug.Log("うちかたふえた");
         }
-        else if (r % 4 == 2)
-        {
-            // 与ダメージUP
-            if (this.point == 5)
-            {
-                this.point = 7;
-            }
-            else
-            {
-                this.point = 10;
-            }
-            Debug.Log("つよくなった");
-        }
-        else if (r % 4 == 3)
+        else if (r % 3 == 3)
         {
             // 射撃間隔UP
             if (this.interval == 5)

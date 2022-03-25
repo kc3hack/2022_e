@@ -3576,7 +3576,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761515114}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -3645,6 +3645,18 @@ PrefabInstance:
     - target: {fileID: 1880919445579362354, guid: 641d6e84c8a745544a7faf1c62da8cc1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880919445579362365, guid: 641d6e84c8a745544a7faf1c62da8cc1, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880919445579362365, guid: 641d6e84c8a745544a7faf1c62da8cc1, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880919445579362365, guid: 641d6e84c8a745544a7faf1c62da8cc1, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1880919445579362367, guid: 641d6e84c8a745544a7faf1c62da8cc1, type: 3}
       propertyPath: m_Name

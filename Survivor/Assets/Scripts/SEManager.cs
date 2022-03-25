@@ -10,6 +10,7 @@ public class SEManager : MonoBehaviour
     [SerializeField] private AudioClip generatorDamaged;
     [SerializeField] private AudioClip generatorDestroyed;
     [SerializeField] private AudioClip playerShot;
+    [SerializeField] private AudioSource playerCharge;
 
 
     // Start is called before the first frame update
@@ -43,6 +44,12 @@ public class SEManager : MonoBehaviour
     public static void ShotP()
     {
         instance.source.PlayOneShot(instance.playerShot);
+        instance.playerCharge.Stop();
+    }
+
+    public static void ChargeP()
+    {
+        instance.playerCharge.Play();
     }
 
 }
