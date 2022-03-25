@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// プレイヤーキャラ
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
     private int shotType = 1; // 射撃方法
     private float charge = 0.5f;
     private Vector2 direction = new Vector2(0, 0); // プレイヤーの向き
+    [SerializeField] Text text;
 
     // Start is called before the first frame update
     void Start()
@@ -98,7 +100,7 @@ public class Player : MonoBehaviour
             }
             Debug.Log("うちかたふえた");
         }
-        else if (r % 3 == 3)
+        else if (r % 3 == 2)
         {
             // 射撃間隔UP
             if (this.interval == 5)
@@ -111,6 +113,35 @@ public class Player : MonoBehaviour
             }
             Debug.Log("ひんどあがった");
         }
+
+        string param = "移動";
+        if (this.moveSpeed == 70)
+        {
+            param += "+";
+        }
+        else if (this.moveSpeed == 100)
+        {
+            param += "++";
+        }
+        param += " 射撃";
+        if (this.shotType == 2)
+        {
+            param += "+";
+        }
+        else if (this.shotType == 3)
+        {
+            param += "++";
+        }
+        param += " 間隔";
+        if (this.interval == 4)
+        {
+            param += "+";
+        }
+        else if (this.interval == 3)
+        {
+            param += "++";
+        }
+        this.text.text = param;
     }
 
     /// <summary>
