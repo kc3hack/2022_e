@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private float moveSpeed = 50; // 移動速度
     private int point = 5; // 与ダメージ
     private int shotType = 1; // 射撃方法
-    private float charge = 1;
+    private float charge = 0.5f;
     private Vector2 direction = new Vector2(0, 0); // プレイヤーの向き
 
     // Start is called before the first frame update
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Attack();
-            this.charge = 1;
+            this.charge = 0.5f;
         }
 
         if (seconds > interval)
