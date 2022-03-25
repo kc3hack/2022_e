@@ -44,20 +44,18 @@ public class SecondStratgey : PlanterStrategy
     {
         float x = 250;
         float y = 250;
-        int size = 0;
+        float plantPositionX = Generator.GetGeneratorPosition().x;
+        float plantPositionY = Generator.GetGeneratorPosition().y;
         for(;;){
             System.Random r = new System.Random();
-            float random = r.Next(-50, 50) * (r.Next(-10, 10));
-            if(random > 0){
-                size = 250;
-            }
-            else{
-                size = -250;
-            }
-            x = Generator.GetGeneratorPosition().x + size + (r.Next(-50, 50) * (r.Next(-10, 10)));
-            y = Generator.GetGeneratorPosition().y + size + (r.Next(-50, 50) * (r.Next(-10, 10)));
 
-            if(Math.Pow(x + 250, 2) + Math.Pow(y + 250, 2) > 700){
+            x = plantPositionX + (r.Next(-800, 800) + r.Next(-90, 90) + r.Next(-10, 10));
+            y = plantPositionY + (r.Next(-800, 800) + r.Next(-90, 90) + r.Next(-10, 10));
+
+            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 1000000){
+                continue;
+            }
+            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 360000){
                 Debug.Log("(" + x.ToString() + "," + y.ToString() + ")につくる");
                 break;
             }
