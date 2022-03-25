@@ -36,6 +36,8 @@ public class Bullet : MonoBehaviour
     public void SetChargePoint(int point)
     {
         this.chargePoint = point;
+        this.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(20 * this.chargePoint, 20 * this.chargePoint);
+        this.gameObject.GetComponent<BoxCollider2D>().size = this.gameObject.GetComponent<RectTransform>().sizeDelta;
     }
 
     /// <summary>
@@ -49,7 +51,7 @@ public class Bullet : MonoBehaviour
     /// <param name="spd">発射速度</param>
     public virtual void Shot(float x, float y, float xDir, float yDir, float dir, float spd)
     {
-        this.gameObject.transform.Rotate(0, 0, dir);
+        //this.gameObject.transform.Rotate(0, 0, dir);
         this.gameObject.transform.position = new Vector3(x, y, 0);
         this.xDir = xDir;
         this.yDir = yDir;

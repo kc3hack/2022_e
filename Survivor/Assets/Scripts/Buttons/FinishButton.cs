@@ -6,7 +6,7 @@ using UnityEngine;
 /// ゲーム終了を実装するボタン
 /// JumpButtonを参考に作って見て欲しい
 /// </summary>
-public class FinishButton : MonoBehaviour
+public class FinishButton : MonoBehaviour, IClickable
 {
     // Start is called before the first frame update
     void Start()
@@ -18,5 +18,14 @@ public class FinishButton : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void OnClicked()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_STANDALONE
+      UnityEngine.Application.Quit();
+#endif
     }
 }

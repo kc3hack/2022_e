@@ -10,7 +10,7 @@ public class SelectButton : MonoBehaviour, IClickable
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.GetChild(0).GetComponent<Text>().text = this.targetStrategyName;
+        //this.transform.GetChild(0).GetComponent<Text>().text = this.targetStrategyName;
     }
 
     // Update is called once per frame
