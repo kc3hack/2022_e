@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private float moveSpeed = 50; // 移動速度
     private int point = 5; // 与ダメージ
     private int shotType = 1; // 射撃方法
+    private float charge = 1;
     private Vector2 direction = new Vector2(0, 0); // プレイヤーの向き
 
     // Start is called before the first frame update
@@ -29,9 +30,21 @@ public class Player : MonoBehaviour
         }
         seconds += Time.deltaTime; // 秒数カウント
 
-        if (seconds > interval)
+        if (Input.GetKey(KeyCode.Space))
+        {
+            this.charge += Time.deltaTime;
+            this.point = (int)this.charge * 5;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             Attack();
+            this.charge = 1;
+        }
+
+        if (seconds > interval)
+        {
+            //Attack();
             Debug.Log("発射");
             seconds = 0; //秒数カウント初期化
         }
@@ -217,6 +230,7 @@ public class Player : MonoBehaviour
         float x = this.gameObject.transform.position.x;
         float y = this.gameObject.transform.position.y;
         bullet.SetChargePoint(this.point);
+        SEManager.ShotP();
         bullet.Shot(x, y, xDir, yDir, dir, speed);
     }
 
