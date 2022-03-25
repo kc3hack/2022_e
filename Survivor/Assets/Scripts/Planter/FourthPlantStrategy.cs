@@ -52,6 +52,9 @@ public class FourthStratgey : PlanterStrategy
             x = plantPositionX + (r.Next(-800, 800) + r.Next(-90, 90) + r.Next(-10, 10));
             y = plantPositionY + (r.Next(-800, 800) + r.Next(-90, 90) + r.Next(-10, 10));
 
+            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 1000000){
+                continue;
+            }
             if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 360000){
                 Debug.Log("(" + x.ToString() + "," + y.ToString() + ")につくる");
                 break;
