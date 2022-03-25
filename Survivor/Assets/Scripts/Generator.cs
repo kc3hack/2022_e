@@ -31,6 +31,10 @@ public class Generator : MonoBehaviour
     [SerializeField] private GameObject preWeatherText;
     [SerializeField] private GameObject resultText;
     [SerializeField] private GameObject paramText;
+    [SerializeField] private GameObject scoreText;
+    [SerializeField] private GameObject life3;
+    [SerializeField] private GameObject life2;
+    [SerializeField] private GameObject life1;
     [SerializeField] private Player player;
 
     /// <summary>
@@ -156,6 +160,8 @@ public class Generator : MonoBehaviour
         }
         seconds += Time.deltaTime;
         time += Time.deltaTime;
+
+        scoreText.GetComponent<Text>().text = "給電量 " + GetScore() + " J";
 
         if (seconds > interval)
         {
@@ -359,6 +365,14 @@ public class Generator : MonoBehaviour
         else
         {
             SEManager.DamagedG();
+            if (hp == 2)
+            {
+                this.life3.SetActive(false);
+            }
+            else
+            {
+                this.life2.SetActive(false);
+            }
         }
     }
 
