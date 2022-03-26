@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     protected int chargePoint = 1; // 与ダメージ
     private Rigidbody2D rigidBody;
     private bool isSet = false; // 発射可能
+    private bool isShot = false;
     private float xDir = 0; // 発射角度初期値0
     private float yDir = 0; // 発射角度初期値0
     protected float speed = 0; // 移動速度初期値0
@@ -25,7 +26,16 @@ public class Bullet : MonoBehaviour
     {
         if (isSet)
         {
-            this.rigidBody.AddForce(new Vector2(this.xDir, this.yDir) * speed, ForceMode2D.Force);
+            if (isShot)
+            {
+                this.rigidBody.AddForce(new Vector2(this.xDir, this.yDir) * speed, ForceMode2D.Force);
+            }
+            else
+            {
+                this.rigidBody.AddForce(new Vector2(this.xDir, this.yDir) * speed * 10, ForceMode2D.Impulse);
+                this.isShot = true;
+            }
+
         }
     }
 
