@@ -169,6 +169,7 @@ public class Player : MonoBehaviour
         {
             this.Shot03();
         }
+        SEManager.ShotP();
     }
 
     private float CalculateAngle()
@@ -231,7 +232,7 @@ public class Player : MonoBehaviour
         bullet.gameObject.transform.parent = GameObject.FindGameObjectWithTag("PlayArea").transform;
         float x = this.gameObject.transform.position.x;
         float y = this.gameObject.transform.position.y;
-        SEManager.ShotP();
+        //SEManager.ShotP();
         bullet.Shot(x, y, 0, 1, 90, 10);
     }
 
@@ -253,7 +254,7 @@ public class Player : MonoBehaviour
         float x = this.gameObject.transform.position.x;
         float y = this.gameObject.transform.position.y;
         bullet.SetChargePoint(this.point);
-        SEManager.ShotP();
+        //SEManager.ShotP();
         bullet.Shot(x, y, xDir, yDir, dir, speed);
     }
 
