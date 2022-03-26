@@ -22,7 +22,7 @@ public class Generator : MonoBehaviour
     private int score;
     private int phase = 0; // 敵の強さの段階
     private int wind = 0; // 風力 (0:なし,1:弱,2:並,3:強)
-    private int fossil = 0; // 化石燃料資源量 (0:なし, 最大値とかを決めなきゃですね)
+    private float fossil = 0f; // 化石燃料資源量 (0:なし, 最大値とかを決めなきゃですね)
     private int weather = 0; // 天気 (0:曇り, 1:晴れ, 2:快晴, 3:雨)
     private int preWeather = 0; // 前日の天気(0:曇り, 1:晴れ, 2:快晴, 3:雨)
     [SerializeField] private GameObject windText;
@@ -112,7 +112,7 @@ public class Generator : MonoBehaviour
     /// 化石燃料量のゲッター
     /// </summary>
     /// <returns></returns>
-    public static int GetFossil()
+    public static float GetFossil()
     {
         return instance.fossil;
     }
@@ -274,7 +274,7 @@ public class Generator : MonoBehaviour
         this.paramText.GetComponent<Text>().text += "," + tex;
 
         tex = "化石:";
-        tex += fossil;
+        tex += fossil - fossil % 1;
         this.fossilText.GetComponent<Text>().text = tex;
         this.paramText.GetComponent<Text>().text += "," + tex;
     }
