@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private float charge = 0.5f;
     private Vector2 direction = new Vector2(0, 0); // プレイヤーの向き
     [SerializeField] Text text;
+    [SerializeField] Text chargeText;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,8 @@ public class Player : MonoBehaviour
             {
                 this.charge += Time.deltaTime;
                 this.point = (int)this.charge * 5;
+                int ch = (int)(this.charge * 5 * 72);
+                this.chargeText.text = "電力量 " + ch + " kJ";
                 //SEManager.ChargeP();
             }
 
@@ -45,7 +48,12 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            if (point < 1)
+            {
+                return;
+            }
             Attack();
+            this.chargeText.text = "電力量 0 kJ";
             this.charge = 0.5f;
         }
 
