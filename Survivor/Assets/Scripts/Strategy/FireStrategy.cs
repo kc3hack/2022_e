@@ -21,7 +21,7 @@ public class FireStrategy : GeneratorStrategy
         fossil = Generator.GetFossil();
         if (fossil > 180/5)
         {
-            interval = 170 / fossil;
+            interval = 175 / fossil;
         }
     }
 
