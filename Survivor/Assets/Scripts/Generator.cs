@@ -172,7 +172,7 @@ public class Generator : MonoBehaviour
 
         // このへんで、timeかsecondsみたいな感じで昼夜の設定とかをしても良いと思う
 
-        if (time > 60.0f)
+        if (time > 30.0f)
         {
             this.phase += 1; // フェイズの移行処理
             Debug.Log("第n段階に到達、敵が強化");
