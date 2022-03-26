@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 695756109}
   - component: {fileID: 695756112}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1074,7 +1074,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1410.9115, y: -507.8001}
+  m_AnchoredPosition: {x: 1451, y: -507.80002}
   m_SizeDelta: {x: 900, y: 357.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1213371958
@@ -1110,7 +1110,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u305F\u304F\u3068\u3000\u6240\u5C5E"
+  m_Text: "\u305F\u304F\u3068\u3000Ri-one\n\u30B2\u30FC\u30E0\u958B\u767A\u306F\u9AD8\u6821\u306E\u90E8\u6D3B\u52D5\u4EE5\u6765\u3067\u3057\u305F\u3002\u610F\u8B58\u6539\u9769\u306E\u305F\u3081\u306ESDGs\u306E\u4F1D\u3048\u65B9\u3092\u8A66\u884C\u932F\u8AA4\u3057\u305F\u3053\u3068\u3084\u3001\u30C1\u30FC\u30E0\u3067\u306E\u30B2\u30FC\u30E0\u958B\u767A\u304C\u975E\u5E38\u306B\u697D\u3057\u304B\u3063\u305F\u3002"
 --- !u!222 &1213371959
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1153,7 +1153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 510.9115, y: -169.45007}
+  m_AnchoredPosition: {x: 479, y: -169.45}
   m_SizeDelta: {x: 900, y: 318.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323641819
@@ -1232,7 +1232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 510.9115, y: -507.8002}
+  m_AnchoredPosition: {x: 479, y: -507.80002}
   m_SizeDelta: {x: 900, y: 357.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1596091511
@@ -1769,7 +1769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1410.9115, y: -169.45004}
+  m_AnchoredPosition: {x: 1451, y: -169.45004}
   m_SizeDelta: {x: 900, y: 318.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862082794
@@ -1805,7 +1805,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "husky\u3000\u6240\u5C5E"
+  m_Text: "husky\u3000RCC\n\u30B2\u30FC\u30E0\u958B\u767A\u306EGit\u7BA1\u7406\u3092\u5186\u6ED1\u306B\u51FA\u6765\u307E\u3057\u305F\u3002\u708E\u4E0A\u3082\u306A\u304F\u6BB5\u53D6\u308A\u826F\u304F\u958B\u767A\u3067\u304D\u305F\u306E\u3067\u826F\u304B\u3063\u305F\u3067\u3059\u3002"
 --- !u!222 &1862082795
 CanvasRenderer:
   m_ObjectHideFlags: 0
