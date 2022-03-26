@@ -12,7 +12,7 @@ public class FirstStratgey : PlanterStrategy
     private List<string> target = new List<string>();
     private int length = 2;
     private System.Random r = new System.Random();
-    private float[] generateSpeed = {5.5f, 5.5f};//SetSecondの引数
+    private float[] generateSpeed = {6.5f, 6.5f};//SetSecondの引数
     public void Initialize()
 
     {
@@ -51,10 +51,10 @@ public class FirstStratgey : PlanterStrategy
             x = plantPositionX + (r.Next(-500, 500) + r.Next(-90, 90) + r.Next(-10, 10));
             y = plantPositionY + (r.Next(-500, 500) + r.Next(-90, 90) + r.Next(-10, 10));
 
-            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 490000){
+            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 640000){
                 continue;
             }
-            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 160000){
+            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 360000){
                 Debug.Log("(" + x.ToString() + "," + y.ToString() + ")につくる");
                 break;
             }
