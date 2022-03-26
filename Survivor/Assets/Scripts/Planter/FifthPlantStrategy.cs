@@ -13,7 +13,7 @@ public class FifthStratgey : PlanterStrategy
     private List<string> target = new List<string>();
     private int length = 4;
     private System.Random r = new System.Random();
-    private float[] generateSpeed = {7.0f, 7.0f, 6.0f, 6.0f};//SetSecondの引数
+    private float[] generateSpeed = {7.0f, 7.0f, 6.0f, 5.0f};//SetSecondの引数
     public void Initialize()
     {
         //家電を配列に入れる
