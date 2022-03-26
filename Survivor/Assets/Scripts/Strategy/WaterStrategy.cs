@@ -35,7 +35,7 @@ public class WaterStrategy : GeneratorStrategy
     /// </summary>
     public void Attack()
     {
-        if (Generator.GetPhase() == 0)
+        if (Generator.GetPhase() < 2)
         {
             this.generator.Shot(); // 上向きに射撃
             this.generator.Shot(3, 1, 33.33f, 3);
@@ -44,7 +44,7 @@ public class WaterStrategy : GeneratorStrategy
             this.generator.Shot(-3, -1, -153.33f, 3);
             this.generator.Shot(0, -1, -90, 10);
         }
-        else if (Generator.GetPhase() == 1)
+        else if (Generator.GetPhase() < 4)
         {
             this.num += 1;
             if (num % 2 == 0)
@@ -66,7 +66,7 @@ public class WaterStrategy : GeneratorStrategy
                 this.generator.Shot(0, -1, -90, 10);
             }
         }
-        else if (Generator.GetPhase() == 2)
+        else
         {
             this.num += 1;
             if (num % 4 == 0)
