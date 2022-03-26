@@ -13,7 +13,7 @@ public class FinalStratgey : PlanterStrategy
     private List<string> target = new List<string>();
     private int length = 4;
     private System.Random r = new System.Random();
-    private float[] generateSpeed = {7.7f, 7.7f, 7.0f, 7.0f};//SetSecondの引数//ラッキーセブン
+    private float[] generateSpeed = {8.5f, 8.5f, 7.7f, 7.7f};//SetSecondの引数
     public void Initialize()
     {
         //家電を配列に入れる
@@ -52,10 +52,10 @@ public class FinalStratgey : PlanterStrategy
             x = plantPositionX + (r.Next(-500, 500) + r.Next(-90, 90) + r.Next(-10, 10));
             y = plantPositionY + (r.Next(-500, 500) + r.Next(-90, 90) + r.Next(-10, 10));
 
-            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 490000){
+            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 640000){
                 continue;
             }
-            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 160000){
+            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 360000){
                 Debug.Log("(" + x.ToString() + "," + y.ToString() + ")につくる");
                 break;
             }
