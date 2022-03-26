@@ -12,6 +12,7 @@ public class FifthStratgey : PlanterStrategy
     private ElectricPlanter planter;
     private List<string> target = new List<string>();
     private int length = 4;
+    private System.Random r = new System.Random();
     private float[] generateSpeed = {7.0f, 7.0f, 6.0f, 6.0f};//SetSecondの引数
     public void Initialize()
     {
@@ -48,10 +49,8 @@ public class FifthStratgey : PlanterStrategy
         float plantPositionX = Generator.GetGeneratorPosition().x;
         float plantPositionY = Generator.GetGeneratorPosition().y;
         for(;;){
-            System.Random r = new System.Random();
-
-            x = plantPositionX + (r.Next(-600, 600) + r.Next(-90, 90) + r.Next(-10, 10));
-            y = plantPositionY + (r.Next(-600, 600) + r.Next(-90, 90) + r.Next(-10, 10));
+            x = plantPositionX + (r.Next(-500, 500) + r.Next(-90, 90) + r.Next(-10, 10));
+            y = plantPositionY + (r.Next(-500, 500) + r.Next(-90, 90) + r.Next(-10, 10));
 
             if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 490000){
                 continue;
