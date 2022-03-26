@@ -18,7 +18,7 @@ public class FireStrategy : GeneratorStrategy
 
     public FireStrategy()
     {
-
+        fossil = Generator.GetFossil();
     }
 
     /// <summary>
