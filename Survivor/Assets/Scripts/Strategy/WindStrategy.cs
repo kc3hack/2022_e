@@ -11,11 +11,13 @@ public class WindStrategy : GeneratorStrategy
     private int interval;
     private int hp = 3;
     private float rad;
+    private float windLV;
 
     public WindStrategy()
     {
         this.interval = 3;
         this.rad = -Mathf.PI/4;
+        this.windLV = (3 - Generator.GetWind) * 0.7;
     }
 
     /// <summary>
@@ -45,15 +47,15 @@ public class WindStrategy : GeneratorStrategy
 
         if (Generator.GetPhase() == 0)
         {
-            this.interval = 3;
-        }
-        else if (Generator.GetPhase() == 1)
-        {
-            this.interval = 2;
+            this.interval = 3 + this.windLV;
         }
         else if (Generator.GetPhase() == 2)
         {
-            this.interval = 1;
+            this.interval = 2 + this.windLV;
+        }
+        else if (Generator.GetPhase() == 4)
+        {
+            this.interval = 1 + this.windLV;
         }
         this.generator.SetInterval(this.interval);
     }
