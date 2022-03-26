@@ -27,7 +27,7 @@ public class FireStrategy : GeneratorStrategy
     public void Attack()
     {
         if(fossil > 0){
-            fossil = float - 0.5;
+            fossil = float - 0.5f;
             this.generator.Shot(Mathf.Cos(Rand(n+90)), Mathf.Sin(Rand(n+90)), 90+n,10); // 上向きに射撃
             this.generator.Shot(Mathf.Cos(Rand(n-90)), Mathf.Sin(Rand(n-90)), 90+n,10); // 下向きに射撃
             this.generator.Shot(Mathf.Cos(Rand(n)),    Mathf.Sin(Rand(n)),    0+n, 10); // 右向きに射撃
