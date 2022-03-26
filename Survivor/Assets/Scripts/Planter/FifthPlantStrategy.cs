@@ -12,7 +12,8 @@ public class FifthStratgey : PlanterStrategy
     private ElectricPlanter planter;
     private List<string> target = new List<string>();
     private int length = 4;
-    private float[] generateSpeed = {0.5f, 0.5f, 0.5f, 0.5f};//SetSecondの引数
+    private System.Random r = new System.Random();
+    private float[] generateSpeed = {7.0f, 7.0f, 6.0f, 5.0f};//SetSecondの引数
     public void Initialize()
     {
         //家電を配列に入れる
@@ -48,15 +49,13 @@ public class FifthStratgey : PlanterStrategy
         float plantPositionX = Generator.GetGeneratorPosition().x;
         float plantPositionY = Generator.GetGeneratorPosition().y;
         for(;;){
-            System.Random r = new System.Random();
+            x = plantPositionX + (r.Next(-500, 500) + r.Next(-90, 90) + r.Next(-10, 10));
+            y = plantPositionY + (r.Next(-500, 500) + r.Next(-90, 90) + r.Next(-10, 10));
 
-            x = plantPositionX + (r.Next(-800, 800) + r.Next(-90, 90) + r.Next(-10, 10));
-            y = plantPositionY + (r.Next(-800, 800) + r.Next(-90, 90) + r.Next(-10, 10));
-
-            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 1000000){
+            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 490000){
                 continue;
             }
-            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 360000){
+            if(Math.Pow(x - plantPositionX, 2) + Math.Pow(y - plantPositionY, 2) > 160000){
                 Debug.Log("(" + x.ToString() + "," + y.ToString() + ")につくる");
                 break;
             }
