@@ -11,18 +11,14 @@ public class FireStrategy : GeneratorStrategy
 {
     private Generator generator;
     private string name = "火力発電所";
-    private int interval = 5;
+    private int interval = 4;
     private int hp = 3;
     private float n = 0;
-    private int fossil;
+    private float fossil;
 
     public FireStrategy()
     {
         fossil = Generator.GetFossil();
-        if (fossil > 180/5)
-        {
-            interval = 150 / fossil;
-        }
     }
 
     /// <summary>
@@ -31,7 +27,7 @@ public class FireStrategy : GeneratorStrategy
     public void Attack()
     {
         if(fossil > 0){
-            fossil--;
+            fossil = float - 0.5f;
             this.generator.Shot(Mathf.Cos(Rand(n+90)), Mathf.Sin(Rand(n+90)), 90+n,10); // 上向きに射撃
             this.generator.Shot(Mathf.Cos(Rand(n-90)), Mathf.Sin(Rand(n-90)), 90+n,10); // 下向きに射撃
             this.generator.Shot(Mathf.Cos(Rand(n)),    Mathf.Sin(Rand(n)),    0+n, 10); // 右向きに射撃
