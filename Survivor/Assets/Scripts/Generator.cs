@@ -161,7 +161,7 @@ public class Generator : MonoBehaviour
         seconds += Time.deltaTime;
         time += Time.deltaTime;
 
-        scoreText.GetComponent<Text>().text = "給電量 " + GetScore() + " J";
+        scoreText.GetComponent<Text>().text = "給電量 " + GetScore() + " kJ";
 
         if (seconds > interval)
         {
@@ -434,7 +434,7 @@ public class Generator : MonoBehaviour
     {
         Debug.Log("ゲーム終了だドン");
         instance.isGame = false;
-        instance.resultText.GetComponent<Text>().text = instance.score + " J";
+        instance.resultText.GetComponent<Text>().text = instance.score + " kJ";
         instance.resultpanel.SetActive(true);
         // スコア算出とか結果発表とかの終了後の処理
     }

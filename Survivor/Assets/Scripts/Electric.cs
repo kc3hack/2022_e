@@ -64,7 +64,7 @@ public class Electric : MonoBehaviour
         this.hp -= damage;
         if (this.hp < 1)
         {
-            Generator.AddScore(this.maxHp);
+            Generator.AddScore(this.maxHp * 72);
             System.Random rand = new System.Random();
             if (rand.Next() % 10 < 1)
             {
