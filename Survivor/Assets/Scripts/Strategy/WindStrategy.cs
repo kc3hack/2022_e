@@ -8,16 +8,16 @@ public class WindStrategy : GeneratorStrategy
 {
     private Generator generator;
     private string name = "風力発電所";
-    private int interval;
+    private float interval;
     private int hp = 3;
     private float rad;
     private float windLV;
 
     public WindStrategy()
     {
-        this.interval = 3;
+        this.interval = 3f;
         this.rad = -Mathf.PI/4;
-        this.windLV = (3 - Generator.GetWind) * 0.7;
+        this.windLV = (3 - Generator.GetWind()) * 0.7f;
     }
 
     /// <summary>
