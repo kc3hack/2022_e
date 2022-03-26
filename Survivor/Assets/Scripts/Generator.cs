@@ -394,6 +394,32 @@ public class Generator : MonoBehaviour
         this.strategy.DefineHP();
         this.strategy.DefineInterval();
         string tex = this.paramText.GetComponent<Text>().text;
+        string spriteName = "Sprites/";
+        if (this.strategy is FireStrategy)
+        {
+            spriteName += "karyoku";
+        }
+        else if (this.strategy is AtomStrategy)
+        {
+            spriteName += "gensiryoku";
+        }
+        else if (this.strategy is SolStrategy)
+        {
+            spriteName += "taiyoukou";
+        }
+        else if (this.strategy is WaterStrategy)
+        {
+            spriteName += "suiryoku";
+        }
+        else if (this.strategy is WindStrategy)
+        {
+            spriteName += "huuryoku";
+        }
+        else
+        {
+            spriteName += "sample";
+        }
+        this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(spriteName);
         this.paramText.GetComponent<Text>().text = this.strategy.GetName() + "\n" + tex;
         this.score = 0;
         Debug.Log("ゲームを始めるドン");
