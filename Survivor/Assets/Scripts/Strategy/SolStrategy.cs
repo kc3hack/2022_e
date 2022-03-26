@@ -50,7 +50,7 @@ public class SolStrategy : GeneratorStrategy
         }
         else if (solnum == 0)
         {
-            this.generator.SetInterval(this.interval + 5);
+            this.generator.SetInterval(this.interval + 3);
         }
         else if (solnum == 1)
         {
@@ -62,7 +62,7 @@ public class SolStrategy : GeneratorStrategy
         }
         else if (solnum == 3)
         {
-            this.generator.SetInterval(this.interval + 7);
+            this.generator.SetInterval(this.interval + 5);
         }
 
     }
