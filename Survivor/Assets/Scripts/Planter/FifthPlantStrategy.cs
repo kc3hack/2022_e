@@ -30,7 +30,6 @@ public class FifthStratgey : PlanterStrategy
 
         for(int i = 0; i < length; i++){
             this.planter.SetTarget(target[i]);
-            Debug.Log("つくる");
             planter.SetSeconds(generateSpeed[i]);
             planter.Plant();
         }

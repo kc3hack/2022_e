@@ -175,7 +175,7 @@ public class Generator : MonoBehaviour
         if (time > 60.0f)
         {
             this.phase += 1; // フェイズの移行処理
-            Debug.Log("第n段階に到達、敵が強化");
+            Debug.Log("第" + this.phase.ToString() +  "段階に到達、敵が強化");
             this.strategy.DefineInterval();
             this.time = 0;
             // 強化する

@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         if (seconds > interval)
         {
             //Attack();
-            Debug.Log("発射");
+            //Debug.Log("発射");
             seconds = 0; //秒数カウント初期化
         }
 
