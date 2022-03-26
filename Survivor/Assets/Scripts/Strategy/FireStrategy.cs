@@ -34,10 +34,6 @@ public class FireStrategy : GeneratorStrategy
             this.generator.Shot(Mathf.Cos(Rand(n+180)),Mathf.Sin(Rand(n+180)),0+n, 10); // 左向きに射撃
             n = n + 15;
         }
-        else{
-            this.generator.Shot(Mathf.Cos(Rand(n+90)), Mathf.Sin(Rand(n+90)), 90+n,10); // 上向きに射撃
-            n = n + 45;
-        }
     }
     public float Rand(float n)
     {
