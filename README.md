@@ -38,9 +38,9 @@
 - MediBang Paint
 
 ## Credit
-- イラスト:[いらすとや](https://www.irasutoya.com/)
-- 音楽:[フリー音楽素材MusMus](https://musmus.main.jp/)
-- 効果音:[無料お効果音で遊ぼう！](https://taira-komori.jpn.org/)
+- イラスト：[いらすとや](https://www.irasutoya.com/)
+- 音楽：[フリー音楽素材MusMus](https://musmus.main.jp/)
+- 効果音：[無料効果音で遊ぼう！](https://taira-komori.jpn.org/)
 
 ## TeamMember
 - ふじふじ
