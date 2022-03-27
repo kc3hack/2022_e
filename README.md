@@ -37,6 +37,10 @@
 - Unity (C#)
 - MediBang Paint
 
+#### クラス図(簡易)
+![classmedia](https://user-images.githubusercontent.com/68993961/160268488-bc84dd05-c17b-4edc-a726-9aae668dd4a9.png)
+
+
 ## Credit
 - イラスト：[いらすとや](https://www.irasutoya.com/)
 - 音楽：[フリー音楽素材MusMus](https://musmus.main.jp/)
