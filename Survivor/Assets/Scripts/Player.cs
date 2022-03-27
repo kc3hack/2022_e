@@ -38,12 +38,11 @@ public class Player : MonoBehaviour
             if (this.charge < 100)
             {
                 this.charge += Time.deltaTime;
-                this.point = (int)this.charge * 5;
-                int ch = (int)(this.charge * 5 * 72);
+                this.point = (int)(this.charge * this.interval);
+                int ch = (int)(this.charge * this.interval * 72);
                 this.chargeText.text = "電力量 " + ch + " kJ";
                 //SEManager.ChargeP();
             }
-
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
@@ -113,11 +112,11 @@ public class Player : MonoBehaviour
             // 射撃間隔UP
             if (this.interval == 5)
             {
-                this.interval = 4;
+                this.interval = 6;
             }
             else
             {
-                this.interval = 3;
+                this.interval = 7;
             }
             Debug.Log("ひんどあがった");
         }
@@ -141,11 +140,11 @@ public class Player : MonoBehaviour
             param += "++";
         }
         param += " 間隔";
-        if (this.interval == 4)
+        if (this.interval == 6)
         {
             param += "+";
         }
-        else if (this.interval == 3)
+        else if (this.interval == 7)
         {
             param += "++";
         }
