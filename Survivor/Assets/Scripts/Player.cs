@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            if (this.charge < 100)
+            if (this.charge < 10)
             {
                 this.charge += Time.deltaTime;
                 this.point = (int)(this.charge * this.interval);
